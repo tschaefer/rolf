@@ -1,0 +1,10 @@
+require: rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+Style/NegatedIf:
+  Enabled: False
+
+Style/Documentation:
+  Enabled: False

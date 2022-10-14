@@ -1,0 +1,35 @@
+<h1>rolf</h1>
+<p>Ask Rolf for postcode.</p>
+<p><img alt="Rofl - Deutsche Bundespost (Public Domain) " src="https://www.stupidedia.org/images/9/93/ROLF_-_DEUTSCHE_POST_-_DEUTSCHE_BUNDESPOST_I.jpg" title="Rolf - Deutsche Bundespost (Public Domain)" /></p>
+<h2>Introduction</h2>
+<p>Ask <strong>Rolf</strong> with german city, street and optional federal state name and he will
+answer you with all matching postcodes.</p>
+<h2>Installation</h2>
+<pre><code>$ gem build
+$ gem install rolf-$(ruby -Ilib -e 'require "rolf/version"; puts Rolf::VERSION').gem
+</code></pre>
+<h2>Usage</h2>
+<pre><code>$ rolf query --full Gamisch-Partenkirchen Zugspitzstrasse
+82467
+
+$ rolf query --full Gamisch-Partenkirchen Zugspitzstrasse
+Zugspitzstraße, Garmisch-Partenkirchen, Landkreis Garmisch-Partenkirchen, Obb, Bayern, 82467
+
+$ rolf query --json Gamisch-Partenkirchen Zugspitzstrasse
+[
+  {
+    "road": "Zugspitzstraße",
+    "town": "Garmisch-Partenkirchen",
+    "county": "Landkreis Garmisch-Partenkirchen",
+    "state_district": "Obb",
+    "state": "Bayern",
+    "postcode": "82467"
+  }
+]
+</code></pre>
+<p>For further information about the command line tool <code>rolf</code> use the switches
+<code>--help</code> / <code>--man</code>.</p>
+<h2>License</h2>
+<p><a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0.</a></p>
+<h2>Is it any good?</h2>
+<p><a href="https://news.ycombinator.com/item?id=3067434">Yes.</a></p>
