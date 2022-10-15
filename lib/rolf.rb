@@ -23,17 +23,22 @@ module Rolf
     private
 
     def keywords
-      @keywords.map { |pair| umlauts(pair.join('=')) }.join('&')
+      @keywords.map do |pair|
+        umlauts(pair.join('='))
+      end.join('&')
     end
 
     def list(data)
-      data.map do |part|
+      list = data.map do |part|
         address = part['address'].except('country', 'country_code', 'continent')
         address = address.transform_keys(&:to_sym)
         next if !valid?(address)
 
         address
       end.uniq.compact
+      list.map do |address|
+        Struct.new(*address.keys).new(*address.values)
+      end
     end
 
     def umlauts(string)

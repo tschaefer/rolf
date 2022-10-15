@@ -16,8 +16,8 @@ RSpec.describe Rolf, :aggregate_failures do
     it 'returns address list' do
       expect(actual).to be_an(Array)
       expect(actual.size).to be(1)
-      expect(actual).to all(be_a(Hash))
-      expect(actual[0]).to eq(expected)
+      expect(actual).to all(be_a(Struct))
+      expect(actual[0].to_h).to eq(expected)
     end
   end
 

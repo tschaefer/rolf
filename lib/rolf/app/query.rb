@@ -15,16 +15,16 @@ module Rolf
       option '--json', :flag, 'print full address in JSON format'
 
       def process(addresses)
-        return JSON.pretty_generate(addresses) if json?
+        return JSON.pretty_generate(addresses.map(&:to_h)) if json?
 
         full = full? || addresses.size > 1
         addresses.map do |address|
           if full
             address.values.join(', ')
           else
-            address[:postcode]
+            address.postcode
           end
-        end.join('\n')
+        end.join("\n")
       end
 
       def execute
