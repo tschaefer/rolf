@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'pp'
-require 'json'
-
 require_relative 'base'
 
 module Rolf
@@ -15,20 +12,21 @@ module Rolf
       option '--json', :flag, 'print full address in JSON format'
 
       def process(addresses)
-        return JSON.pretty_generate(addresses.map(&:to_h)) if json?
+        return addresses.map { |address| address.to_json(pretty: true) } if json?
 
         full = full? || addresses.size > 1
         addresses.map do |address|
           if full
-            address.values.join(', ')
+            address.to_h.values.join(', ')
           else
-            address.postcode
+            address.record.postcode
           end
         end.join("\n")
       end
 
       def execute
-        addresses = Rolf.query(city: city, street: street, state: state || '') # rubocop:disable Style/HashSyntax
+        rolf = Rolf.new(city: city, street: street, state: state || '') # rubocop:disable Style/HashSyntax
+        addresses = rolf.query(type: 'road')
         exit 1 if addresses.empty?
 
         puts process(addresses)

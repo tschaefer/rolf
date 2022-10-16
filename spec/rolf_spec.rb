@@ -5,33 +5,35 @@ require 'spec_helper'
 require 'rolf'
 
 RSpec.describe Rolf, :aggregate_failures do
-  let(:actual) do
+  subject(:rolf) { described_class.new(city: city, street: street, state: state) } # rubocop:disable Style/HashSyntax
+
+  let(:adresses) do
     VCR.use_cassette('query', record: :new_episodes) do
-      described_class.query(city: city, street: street, state: state) # rubocop:disable Style/HashSyntax
+      rolf.query(type: :road)
     end
   end
   let(:state) { '' }
 
   shared_examples 'list' do
     it 'returns address list' do
-      expect(actual).to be_an(Array)
-      expect(actual.size).to be(1)
-      expect(actual).to all(be_a(Struct))
-      expect(actual[0].to_h).to eq(expected)
+      expect(adresses).to be_an(Array)
+      expect(adresses.size).to be(1)
+      expect(adresses).to all(be_a(Rolf::Address))
+      expect(adresses[0].record.to_h).to eq(address)
     end
   end
 
   shared_examples 'empty' do
     it 'returns no address list' do
-      expect(actual).to be_an(Array)
-      expect(actual.size).to be(0)
-      expect(actual[0]).to be_nil
+      expect(adresses).to be_an(Array)
+      expect(adresses.size).to be(0)
+      expect(adresses[0]).to be_nil
     end
   end
 
   shared_examples 'error' do
     it 'fails with error' do
-      expect { actual }.to raise_error(URI::InvalidURIError)
+      expect { adresses }.to raise_error(URI::InvalidURIError)
     end
   end
 
@@ -39,7 +41,7 @@ RSpec.describe Rolf, :aggregate_failures do
     context 'with existing city and street' do
       let(:city)   { 'Garmisch-Partenkirchen' }
       let(:street) { 'Zugspitzstrasse' }
-      let(:expected) do
+      let(:address) do
         {
           road: 'Zugspitzstraße',
           town: 'Garmisch-Partenkirchen',
@@ -71,7 +73,7 @@ RSpec.describe Rolf, :aggregate_failures do
       let(:city)   { 'Frankfurt' }
       let(:street) { 'Kopernikusstrasse' }
       let(:state)  { 'Hessen' }
-      let(:expected) do
+      let(:address) do
         {
           city: 'Frankfurt',
           city_district: 'Höchst',
@@ -89,7 +91,7 @@ RSpec.describe Rolf, :aggregate_failures do
     context 'with existing city name with umlauts' do
       let(:city)   { 'Gemünden' }
       let(:street) { 'Zeilbaum' }
-      let(:expected) do
+      let(:address) do
         {
           road: 'Zeilbaum',
           village: 'Gemünden',
@@ -105,7 +107,7 @@ RSpec.describe Rolf, :aggregate_failures do
     context 'with existing street name with umlauts' do
       let(:city)   { 'Simmern' }
       let(:street) { 'Gemündener Strasse' }
-      let(:expected) do
+      let(:address) do
         {
           road: 'Gemündener Straße',
           city: 'Simmern/Hunsrück',

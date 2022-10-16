@@ -2,46 +2,52 @@
 
 require 'faraday'
 
+require 'rolf/address'
+
 module Rolf
   BASE_URL  = 'https://names.geo.core.io'
   QUERY_URL = '%s/search.php?countrycode=de&%s&addressdetails=1&format=jsonv2'
 
+  attr_reader :addresses
+
   class << self
-    def query(city:, street:, state: nil)
-      @keywords = { city:, street:, state: }
+    def new(city:, street:, state: nil)
+      @terms = { city:, street:, state: }
+      @url = URI(format(
+                   QUERY_URL,
+                   ENV['ROLF_BASE_URL'] || BASE_URL,
+                   url_params
+                 ))
 
-      url = URI(format(QUERY_URL, ENV['ROLF_NOMINATIM_BASE_URL'] || BASE_URL, keywords))
+      self
+    end
 
-      response = Faraday.new(url) do |f|
+    def query(type: nil)
+      response = Faraday.new(@url) do |f|
         f.request :json
         f.response :json
       end.get
 
-      list(response.body)
+      @addresses = addresses(response.body, type)
     end
 
     private
 
-    def keywords
-      @keywords.map do |pair|
-        umlauts(pair.join('='))
-      end.join('&')
-    end
-
-    def list(data)
-      list = data.map do |part|
-        address = part['address'].except('country', 'country_code', 'continent')
-        address = address.transform_keys(&:to_sym)
-        next if !valid?(address)
+    def addresses(data, type)
+      addresses = data.map do |part|
+        address = Rolf::Address.new(part)
+        next if !type.nil? && !address.type?(type)
+        next if !address.city?(@terms[:city])
 
         address
-      end.uniq.compact
-      list.map do |address|
-        Struct.new(*address.keys).new(*address.values)
       end
+
+      addresses.uniq do |address|
+        address.to_h.keys
+      end.compact
     end
 
-    def umlauts(string)
+    def sanitize_url_param(string)
       string.gsub(/[äöüß]/i) do |match|
         case match.downcase
         when 'ä' then 'ae'
@@ -53,15 +59,10 @@ module Rolf
       end
     end
 
-    def valid?(address)
-      return false if !address.keys.first.eql?(:road)
-
-      %i[city village town].each do |place|
-        return true if address.key?(place) &&
-                       address[place].downcase.match(/#{@keywords[:city].downcase}/)
-      end
-
-      false
+    def url_params
+      @terms.map do |pair|
+        sanitize_url_param(pair.join('=').downcase)
+      end.join('&')
     end
   end
 end

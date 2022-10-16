@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://names.geo.core.io/search.php?addressdetails=1&city=Frankfurt&countrycode=de&format=jsonv2&state=Hessen&street=Kopernikusstrasse
+    uri: https://names.geo.core.io/search.php?addressdetails=1&city=garmisch-partenkirchen&countrycode=de&format=jsonv2&state=&street=grossglocknerstrasse
     body:
       encoding: US-ASCII
       string: ''
@@ -17,7 +17,75 @@ http_interactions:
       server:
       - nginx/1.15.7
       date:
-      - Fri, 14 Oct 2022 07:25:27 GMT
+      - Sun, 16 Oct 2022 08:55:09 GMT
+      content-type:
+      - application/json; charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      x-powered-by:
+      - PHP/7.1.26
+      access-control-allow-origin:
+      - "*"
+      access-control-allow-methods:
+      - OPTIONS,GET
+    body:
+      encoding: UTF-8
+      string: "[]"
+  recorded_at: Sun, 16 Oct 2022 08:54:26 GMT
+- request:
+    method: get
+    uri: https://names.geo.core.io/search.php?addressdetails=1&city=entenhausen&countrycode=de&format=jsonv2&state=&street=hauptstrasse
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.6.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/1.15.7
+      date:
+      - Sun, 16 Oct 2022 08:55:10 GMT
+      content-type:
+      - application/json; charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      x-powered-by:
+      - PHP/7.1.26
+      access-control-allow-origin:
+      - "*"
+      access-control-allow-methods:
+      - OPTIONS,GET
+    body:
+      encoding: UTF-8
+      string: "[]"
+  recorded_at: Sun, 16 Oct 2022 08:54:26 GMT
+- request:
+    method: get
+    uri: https://names.geo.core.io/search.php?addressdetails=1&city=frankfurt&countrycode=de&format=jsonv2&state=hessen&street=kopernikusstrasse
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.6.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/1.15.7
+      date:
+      - Sun, 16 Oct 2022 08:55:10 GMT
       content-type:
       - application/json; charset=UTF-8
       transfer-encoding:
@@ -34,12 +102,12 @@ http_interactions:
       encoding: UTF-8
       string: '[{"place_id":"50151380","licence":"Data © OpenStreetMap contributors,
         ODbL 1.0. https:\/\/osm.org\/copyright","osm_type":"way","osm_id":"8099620","boundingbox":["50.1045327","50.1063245","8.5393963","8.5403614"],"lat":"50.1054634","lon":"8.5397621","display_name":"Kopernikusstraße,
-        Höchst, Frankfurt, Regierungsbezirk Darmstadt, Hessen, 65929, Deutschland","place_rank":"26","category":"highway","type":"residential","importance":0.32000000000000006,"address":{"road":"Kopernikusstraße","suburb":"Höchst","city_district":"Höchst","city":"Frankfurt","state_district":"Regierungsbezirk
+        Höchst, Frankfurt, Regierungsbezirk Darmstadt, Hessen, 65929, Deutschland","place_rank":"26","category":"highway","type":"residential","importance":0.30000000000000004,"address":{"road":"Kopernikusstraße","suburb":"Höchst","city_district":"Höchst","city":"Frankfurt","state_district":"Regierungsbezirk
         Darmstadt","state":"Hessen","postcode":"65929","country":"Deutschland","country_code":"de"}}]'
-  recorded_at: Fri, 14 Oct 2022 07:24:47 GMT
+  recorded_at: Sun, 16 Oct 2022 08:54:27 GMT
 - request:
     method: get
-    uri: https://names.geo.core.io/search.php?addressdetails=1&city=Garmisch-Partenkirchen&countrycode=de&format=jsonv2&state=&street=Zugspitzstrasse
+    uri: https://names.geo.core.io/search.php?addressdetails=1&city=simmern&countrycode=de&format=jsonv2&state=&street=gemuendener+strasse
     body:
       encoding: US-ASCII
       string: ''
@@ -54,7 +122,49 @@ http_interactions:
       server:
       - nginx/1.15.7
       date:
-      - Fri, 14 Oct 2022 07:25:28 GMT
+      - Sun, 16 Oct 2022 08:55:10 GMT
+      content-type:
+      - application/json; charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      x-powered-by:
+      - PHP/7.1.26
+      access-control-allow-origin:
+      - "*"
+      access-control-allow-methods:
+      - OPTIONS,GET
+    body:
+      encoding: UTF-8
+      string: '[{"place_id":"66762947","licence":"Data © OpenStreetMap contributors,
+        ODbL 1.0. https:\/\/osm.org\/copyright","osm_type":"way","osm_id":"132450832","boundingbox":["49.9116899","49.9126947","7.5055842","7.5059025"],"lat":"49.9121417","lon":"7.5056846","display_name":"Gemündener
+        Straße, Layenkaul, Mengerschied, Simmern, Rhein-Hunsrück-Kreis, Rheinland-Pfalz,
+        55490, Deutschland","place_rank":"26","category":"highway","type":"secondary","importance":0.2,"address":{"road":"Gemündener
+        Straße","suburb":"Layenkaul","village":"Mengerschied","county":"Rhein-Hunsrück-Kreis","state":"Rheinland-Pfalz","postcode":"55490","country":"Deutschland","country_code":"de"}},{"place_id":"76931633","licence":"Data
+        © OpenStreetMap contributors, ODbL 1.0. https:\/\/osm.org\/copyright","osm_type":"way","osm_id":"207325426","boundingbox":["49.9796489","49.9807736","7.5219746","7.5237457"],"lat":"49.9801804","lon":"7.5228116","display_name":"Gemündener
+        Straße, Simmern\/Hunsrück, Simmern, Rhein-Hunsrück-Kreis, Rheinland-Pfalz,
+        55469, Deutschland","place_rank":"26","category":"highway","type":"tertiary","importance":0.2,"address":{"road":"Gemündener
+        Straße","city":"Simmern\/Hunsrück","county":"Rhein-Hunsrück-Kreis","state":"Rheinland-Pfalz","postcode":"55469","country":"Deutschland","country_code":"de"}}]'
+  recorded_at: Sun, 16 Oct 2022 08:54:27 GMT
+- request:
+    method: get
+    uri: https://names.geo.core.io/search.php?addressdetails=1&city=garmisch-partenkirchen&countrycode=de&format=jsonv2&state=&street=zugspitzstrasse
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.6.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/1.15.7
+      date:
+      - Sun, 16 Oct 2022 08:55:11 GMT
       content-type:
       - application/json; charset=UTF-8
       transfer-encoding:
@@ -78,10 +188,10 @@ http_interactions:
         Garmisch-Partenkirchen, Landkreis Garmisch-Partenkirchen, Obb, Bayern, 82467,
         Deutschland","place_rank":"27","category":"highway","type":"service","importance":0.275,"address":{"road":"Zugspitzstraße","town":"Garmisch-Partenkirchen","county":"Landkreis
         Garmisch-Partenkirchen","state_district":"Obb","state":"Bayern","postcode":"82467","country":"Deutschland","country_code":"de"}}]'
-  recorded_at: Fri, 14 Oct 2022 07:24:47 GMT
+  recorded_at: Sun, 16 Oct 2022 08:54:27 GMT
 - request:
     method: get
-    uri: https://names.geo.core.io/search.php?addressdetails=1&city=Garmisch-Partenkirchen&countrycode=de&format=jsonv2&state=&street=Grossglocknerstrasse
+    uri: https://names.geo.core.io/search.php?addressdetails=1&city=gemuenden&countrycode=de&format=jsonv2&state=&street=zeilbaum
     body:
       encoding: US-ASCII
       string: ''
@@ -96,117 +206,7 @@ http_interactions:
       server:
       - nginx/1.15.7
       date:
-      - Fri, 14 Oct 2022 07:25:28 GMT
-      content-type:
-      - application/json; charset=UTF-8
-      transfer-encoding:
-      - chunked
-      connection:
-      - keep-alive
-      x-powered-by:
-      - PHP/7.1.26
-      access-control-allow-origin:
-      - "*"
-      access-control-allow-methods:
-      - OPTIONS,GET
-    body:
-      encoding: UTF-8
-      string: "[]"
-  recorded_at: Fri, 14 Oct 2022 07:24:47 GMT
-- request:
-    method: get
-    uri: https://names.geo.core.io/search.php?addressdetails=1&city=Simmern&countrycode=de&format=jsonv2&state=&street=Gemuendener+Strasse
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v2.6.0
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      server:
-      - nginx/1.15.7
-      date:
-      - Fri, 14 Oct 2022 07:25:28 GMT
-      content-type:
-      - application/json; charset=UTF-8
-      transfer-encoding:
-      - chunked
-      connection:
-      - keep-alive
-      x-powered-by:
-      - PHP/7.1.26
-      access-control-allow-origin:
-      - "*"
-      access-control-allow-methods:
-      - OPTIONS,GET
-    body:
-      encoding: UTF-8
-      string: '[{"place_id":"66762947","licence":"Data © OpenStreetMap contributors,
-        ODbL 1.0. https:\/\/osm.org\/copyright","osm_type":"way","osm_id":"132450832","boundingbox":["49.9116899","49.9126947","7.5055842","7.5059025"],"lat":"49.9121417","lon":"7.5056846","display_name":"Gemündener
-        Straße, Layenkaul, Mengerschied, Simmern, Rhein-Hunsrück-Kreis, Rheinland-Pfalz,
-        55490, Deutschland","place_rank":"26","category":"highway","type":"secondary","importance":0.21000000000000002,"address":{"road":"Gemündener
-        Straße","suburb":"Layenkaul","village":"Mengerschied","county":"Rhein-Hunsrück-Kreis","state":"Rheinland-Pfalz","postcode":"55490","country":"Deutschland","country_code":"de"}},{"place_id":"76931633","licence":"Data
-        © OpenStreetMap contributors, ODbL 1.0. https:\/\/osm.org\/copyright","osm_type":"way","osm_id":"207325426","boundingbox":["49.9796489","49.9807736","7.5219746","7.5237457"],"lat":"49.9801804","lon":"7.5228116","display_name":"Gemündener
-        Straße, Simmern\/Hunsrück, Simmern, Rhein-Hunsrück-Kreis, Rheinland-Pfalz,
-        55469, Deutschland","place_rank":"26","category":"highway","type":"tertiary","importance":0.21000000000000002,"address":{"road":"Gemündener
-        Straße","city":"Simmern\/Hunsrück","county":"Rhein-Hunsrück-Kreis","state":"Rheinland-Pfalz","postcode":"55469","country":"Deutschland","country_code":"de"}}]'
-  recorded_at: Fri, 14 Oct 2022 07:24:47 GMT
-- request:
-    method: get
-    uri: https://names.geo.core.io/search.php?addressdetails=1&city=Entenhausen&countrycode=de&format=jsonv2&state=&street=Hauptstrasse
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v2.6.0
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      server:
-      - nginx/1.15.7
-      date:
-      - Fri, 14 Oct 2022 07:25:29 GMT
-      content-type:
-      - application/json; charset=UTF-8
-      transfer-encoding:
-      - chunked
-      connection:
-      - keep-alive
-      x-powered-by:
-      - PHP/7.1.26
-      access-control-allow-origin:
-      - "*"
-      access-control-allow-methods:
-      - OPTIONS,GET
-    body:
-      encoding: UTF-8
-      string: "[]"
-  recorded_at: Fri, 14 Oct 2022 07:24:48 GMT
-- request:
-    method: get
-    uri: https://names.geo.core.io/search.php?addressdetails=1&city=Gemuenden&countrycode=de&format=jsonv2&state=&street=Zeilbaum
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v2.6.0
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      server:
-      - nginx/1.15.7
-      date:
-      - Fri, 14 Oct 2022 07:25:29 GMT
+      - Sun, 16 Oct 2022 08:55:11 GMT
       content-type:
       - application/json; charset=UTF-8
       transfer-encoding:
@@ -224,6 +224,6 @@ http_interactions:
       string: '[{"place_id":"60095647","licence":"Data © OpenStreetMap contributors,
         ODbL 1.0. https:\/\/osm.org\/copyright","osm_type":"way","osm_id":"84209494","boundingbox":["49.8947388","49.8953817","7.4818698","7.4831537"],"lat":"49.8952299","lon":"7.4821868","display_name":"Zeilbaum,
         Gemünden, Kirchberg (Hunsrück), Rhein-Hunsrück-Kreis, Rheinland-Pfalz, 55490,
-        Deutschland","place_rank":"26","category":"highway","type":"residential","importance":0.21000000000000002,"address":{"road":"Zeilbaum","village":"Gemünden","county":"Rhein-Hunsrück-Kreis","state":"Rheinland-Pfalz","postcode":"55490","country":"Deutschland","country_code":"de"}}]'
-  recorded_at: Fri, 14 Oct 2022 07:24:49 GMT
+        Deutschland","place_rank":"26","category":"highway","type":"residential","importance":0.2,"address":{"road":"Zeilbaum","village":"Gemünden","county":"Rhein-Hunsrück-Kreis","state":"Rheinland-Pfalz","postcode":"55490","country":"Deutschland","country_code":"de"}}]'
+  recorded_at: Sun, 16 Oct 2022 08:54:28 GMT
 recorded_with: VCR 6.1.0
