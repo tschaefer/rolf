@@ -7,7 +7,7 @@ Ask Rolf for postcode.
 ## Introduction
 
 Ask **Rolf** with german city, street and optional federal state name and he will
-answer you with all matching postcodes.
+answer you with all matching postcodes or full addresses.
 
 ## Installation
 
@@ -16,13 +16,13 @@ answer you with all matching postcodes.
 
 ## Usage
 
-    $ rolf query --full Gamisch-Partenkirchen Zugspitzstrasse
+    $ rolf query Garmisch-Partenkirchen Zugspitzstrasse
     82467
 
-    $ rolf query --full Gamisch-Partenkirchen Zugspitzstrasse
+    $ rolf query --full Garmisch-Partenkirchen Zugspitzstrasse
     Zugspitzstraße, Garmisch-Partenkirchen, Landkreis Garmisch-Partenkirchen, Obb, Bayern, 82467
 
-    $ rolf query --json Gamisch-Partenkirchen Zugspitzstrasse
+    $ rolf query --json Garmisch-Partenkirchen Zugspitzstrasse
     [
       {
         "road": "Zugspitzstraße",

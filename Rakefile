@@ -4,7 +4,7 @@ $LOAD_PATH.unshift "#{File.dirname(__FILE__)}/lib"
 
 desc 'Build documentation.'
 task :doc do
-  system 'rdoc lib/rolf.rb'
+  system 'rdoc lib/rolf.rb lib/rolf/address.rb'
 end
 
 require 'rspec/core/rake_task'

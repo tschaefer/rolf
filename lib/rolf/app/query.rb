@@ -2,7 +2,7 @@
 
 require_relative 'base'
 
-module Rolf
+class Rolf
   module App
     class QueryCommand < Rolf::App::BaseCommand
       parameter 'CITY', 'city, town or village name'
@@ -11,25 +11,19 @@ module Rolf
       option '--full', :flag, 'print full address'
       option '--json', :flag, 'print full address in JSON format'
 
-      def process(addresses)
-        return addresses.map { |address| address.to_json(pretty: true) } if json?
+      def process(rolf)
+        return rolf.to_json(pretty: true) if json?
 
-        full = full? || addresses.size > 1
-        addresses.map do |address|
-          if full
-            address.to_h.values.join(', ')
-          else
-            address.record.postcode
-          end
-        end.join("\n")
+        full = full? || rolf.addresses.size > 1
+        full ? rolf.to_s : rolf.addresses.first.to_struct.postcode
       end
 
       def execute
         rolf = Rolf.new(city: city, street: street, state: state || '') # rubocop:disable Style/HashSyntax
-        addresses = rolf.query(type: 'road')
-        exit 1 if addresses.empty?
+        rolf.query(type: 'road')
+        exit 1 if rolf.addresses.empty?
 
-        puts process(addresses)
+        puts process(rolf)
       rescue URI::InvalidURIError
         bailout('Bad parameter.')
       rescue StandardError => e

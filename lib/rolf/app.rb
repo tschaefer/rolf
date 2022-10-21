@@ -3,7 +3,7 @@
 require_relative 'app/base'
 require_relative 'app/query'
 
-module Rolf
+class Rolf
   module App
     class Command < Rolf::App::BaseCommand
       subcommand 'query', 'query postalcode', Rolf::App::QueryCommand

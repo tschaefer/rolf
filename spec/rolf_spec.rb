@@ -7,7 +7,7 @@ require 'rolf'
 RSpec.describe Rolf, :aggregate_failures do
   subject(:rolf) { described_class.new(city: city, street: street, state: state) } # rubocop:disable Style/HashSyntax
 
-  let(:adresses) do
+  let(:addresses) do
     VCR.use_cassette('query', record: :new_episodes) do
       rolf.query(type: :road)
     end
@@ -16,24 +16,24 @@ RSpec.describe Rolf, :aggregate_failures do
 
   shared_examples 'list' do
     it 'returns address list' do
-      expect(adresses).to be_an(Array)
-      expect(adresses.size).to be(1)
-      expect(adresses).to all(be_a(Rolf::Address))
-      expect(adresses[0].record.to_h).to eq(address)
+      expect(addresses).to be_an(Array)
+      expect(addresses.size).to be(1)
+      expect(addresses).to all(be_a(Rolf::Address))
+      expect(addresses.first.to_h).to eq(address)
     end
   end
 
   shared_examples 'empty' do
     it 'returns no address list' do
-      expect(adresses).to be_an(Array)
-      expect(adresses.size).to be(0)
-      expect(adresses[0]).to be_nil
+      expect(addresses).to be_an(Array)
+      expect(addresses.size).to be(0)
+      expect(addresses.first).to be_nil
     end
   end
 
   shared_examples 'error' do
     it 'fails with error' do
-      expect { adresses }.to raise_error(URI::InvalidURIError)
+      expect { addresses }.to raise_error(URI::InvalidURIError)
     end
   end
 

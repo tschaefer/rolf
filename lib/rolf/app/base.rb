@@ -7,7 +7,7 @@ require 'tty-pager'
 require_relative '../version'
 require_relative '../../rolf'
 
-module Rolf
+class Rolf
   module App
     class BaseCommand < Clamp::Command
       option ['-m', '--man'], :flag, 'show manpage' do
