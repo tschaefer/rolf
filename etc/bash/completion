@@ -1,0 +1,26 @@
+_rolf() {
+    local cur words
+    _get_comp_words_by_ref cur prev words cword
+
+    local actions='query'
+    local options='--help --man --version'
+
+    if [[ ${#words[@]} -eq 3 ]]; then
+        return
+    fi
+
+    local commands
+    if [[ "$cur" == -* ]]; then
+        commands="$options"
+    else
+        commands="$actions"
+    fi
+
+    mapfile -t COMPREPLY < <(compgen -W "${commands}" -- "$cur")
+
+    return
+}
+
+complete -F _rolf rolf
+
+# vim: ft=sh
