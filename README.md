@@ -2,7 +2,8 @@
 
 Ask Rolf for postcode.
 
-![Rofl - Deutsche Bundespost (Public Domain) ](https://www.stupidedia.org/images/9/93/ROLF_-_DEUTSCHE_POST_-_DEUTSCHE_BUNDESPOST_I.jpg "Rolf - Deutsche Bundespost (Public Domain)")
+![rolf](https://github.com/user-attachments/assets/db44016f-468e-4466-b7bf-4d4bb7f51d3d)
+
 
 ## Introduction
 
